@@ -76,7 +76,7 @@ router.post('/login/admin', async(req,res)=>{
 })
 
 
-router.get('/delete/:id',async(req, res)=>{
+router.get('/delete/:id',verifiedAuth,async(req, res)=>{
 
     const user = await User.findOne({_id: req.params.id})
     if(!user)return res.status(404).send('user has either been deleted or doesnot exist')
