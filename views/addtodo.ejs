@@ -15,24 +15,25 @@
       </nav>
       <ul class="nav justify-content-end nav nav-pills ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">logout</a>
+          <a class="nav-link active" aria-current="page" href="/login">logout</a>
         </li>
       </ul>
 
       <div class="contanier mt-5">
 
         <ul class="list-group">
-          <button type="button" class="btn btn-info"><a href="/delete/<%= user._id %> ">Delete an item</a></button>
+          <a class="btn btn-danger" href="/delete/<%= user._id %>" role="button">Delete An Item</a>
           <br>
-          <button type="button" class="btn btn-info"><a href="/list/<%= user._id %> ">Get Full list</a></button>
+          <a class="btn btn-info" href="/list/<%= user._id %> " role="button">Get Full List</a>
           <br>
         <ul class="list-group">
-        <form action="/add/todo/<%= user._id %> " method="post" class="d-flex">
+        <form action="/add/todo/<%= user._id %> " method="post" >
             <div class="input-group mb-3" >
                 <span class="input-group-text" id="inputGroup-sizing-default"></span>
                 <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Todo" name="todo" required>
               </div>
-
+              <label for="birthday">Due Date: </label>
+              <input type="datetime-local" id="date" name="date" required>
               <button class="btn btn-primary" type="submit">Add Todo</button>
         </form>
       </div>

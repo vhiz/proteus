@@ -15,21 +15,23 @@
       </nav>
       <ul class="nav justify-content-end nav nav-pills ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">logout</a>
+          <a class="nav-link active" aria-current="page" href="/login">logout</a>
         </li>
       </ul>
 
       
       <div class="contanier mt-5">
-        <a class="btn btn-primary" href="/delete/<%= user._id %>" role="button">Delete An Item</a>
+        <a class="btn btn-danger" href="/delete/<%= user._id %>" role="button">Delete An Item</a>
         <ul class="list-group">
           <% todo.forEach(todos => { %>
-            <li class="list-group-item"><%= todos.todo %></li>
-            
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" value="" id="firstCheckbox">
+              <label class="form-check-label" for="firstCheckbox"><%= todos.todo %> </label>
+              <button type="button" class="btn btn-secondary"><%= todos.date %> </button>
+            </li>
           <% }) %>
-          </ul>
+        </ul>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
-

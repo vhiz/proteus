@@ -15,14 +15,14 @@
       </nav>
       <ul class="nav justify-content-end nav nav-pills ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">logout</a>
+          <a class="nav-link active" aria-current="page" href="/login">logout</a>
         </li>
       </ul>
 
       <div class="contanier mt-5">
         <ul class="list-group">
           <% todo.forEach(todos => { %>
-            <li class="list-group-item"><%= todos.todo %></li>
+            <li class="list-group-item"><%= todos.todo %> <button type="button" class="btn btn-secondary"><%= todos.date %> </button></li>
             <button type="button" class="btn btn-danger"><a href="/delete/<%= user._id %>/<%= todos.id %>  ">Delete</a></button>
             
           <% }) %>

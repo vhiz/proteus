@@ -14,7 +14,7 @@
       </nav>
       <ul class="nav justify-content-end nav nav-pills ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">logout</a>
+          <a class="nav-link active" aria-current="page" href="/login">logout</a>
         </li>
       </ul>
       <br>
@@ -31,7 +31,7 @@
             <li class="list-group-item d-flex justify-content-between align-items-center"><%= users.email %>
                 <span class="badge bg-primary rounded-pill"><%= users.isAdmin %> </span>
             </li>
-            <button type="button" class="btn btn-info"><a href="/users/<%= users._id %> ">Info</a></button>
+            <a class="btn btn-primary" href="/users/<%= users._id %> " role="button"><%= users.fullname %> Info  </a>
         <% }) %>
       </ul>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>

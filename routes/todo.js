@@ -9,7 +9,8 @@ const router = require('express').Router()
 router.post('/add/todo/:_id',verifiedAuth ,async(req, res)=>{
     const {_id}= req.params
     const newTodo =({
-        todo: req.body.todo
+        todo: req.body.todo,
+        date: req.body.date
     })
     
     try {
@@ -18,7 +19,6 @@ router.post('/add/todo/:_id',verifiedAuth ,async(req, res)=>{
         })
 
         res.send('List added go back')
-        console.log(newTodo)
     } catch (error) {
         res.status(400).send(error.message)
     }
@@ -36,7 +36,7 @@ router.get('/admin', (req, res)=>{
 router.get('/users/:_id', verifiedAdmin, async(req, res)=>{
     const user = await User.findOne({_id: req.params._id})
     if(!user)return res.status(404).send('user has either been deleted or doesnot exist')
-    res.render("edituser", {user: user})
+    res.render("edituser", {user: user, todo: user.todo})
 })
 
 router.get('/users/delete/:_id', verifiedAdmin, async(req, res)=>{

@@ -19,7 +19,8 @@ const userSchema = new mongoose.Schema({
             default: function () {
                 return new ObjectId().toString()
             }},
-        todo: {type: String}
+        todo: {type: String},
+        date:{type:String}
     })]
 },{timestamps: true})
 

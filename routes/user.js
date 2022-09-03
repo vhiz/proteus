@@ -45,7 +45,7 @@ router.post('/login', async(req,res)=>{
     const valid = await bcrypt.compare(req.body.password, user.password)
     if(!valid) return res.status(401).send('password not correct')
 
-    const token = jwt.sign({_id: user._id, isAdmin:user.isAdmin}, process.env.TOKEN, {expiresIn:'30m'})
+    const token = jwt.sign({_id: user._id, isAdmin:user.isAdmin}, process.env.TOKEN, {expiresIn:'5h'})
 
     res.cookie('token', token, {
         // secure: true,
@@ -65,7 +65,7 @@ router.post('/login/admin', async(req,res)=>{
     const valid = await bcrypt.compare(req.body.password, user.password)
     if(!valid) return res.status(401).send('password not correct')
 
-    const token = jwt.sign({_id: user._id, isAdmin:user.isAdmin}, process.env.TOKEN, {expiresIn:'30m'})
+    const token = jwt.sign({_id: user._id, isAdmin:user.isAdmin}, process.env.TOKEN, {expiresIn:'5h'})
 
     res.cookie('token', token, {
         // secure: true,
@@ -87,6 +87,8 @@ router.get('/delete/:id',async(req, res)=>{
 router.get('/delete/:_id/:todoId',verifiedAuth ,async(req, res)=>{
     const user = await User.findOne({_id: req.params._id})
     if(!user)return res.status(404).send('user has either been deleted or doesnot exist')
+
+    if(!req.params.todoId) return res.status(400).send('item has either been deleted or does not exist')
 
     try {
         const update = await User.findOneAndUpdate({_id: req.params._id}, {

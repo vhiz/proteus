@@ -15,7 +15,7 @@
       </nav>
       <ul class="nav justify-content-end nav nav-pills ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Logout</a>
+          <a class="nav-link active" aria-current="page" href="/login">Logout</a>
         </li>
       </ul>
       <br>
@@ -23,6 +23,11 @@
       <ul class="list-group">
         <li class="list-group-item list-group-item-dark"><%= user.email %> 
             <span class="badge bg-primary rounded-pill"><%= user.blocked %> </span>
+            <ul class="list-group">
+              <% todo.forEach(todos => { %>
+                <li class="list-group-item"><%= todos.todo %></li>
+              <% }) %>
+            </ul>
         </li>
         <a class="btn btn-primary" href="/users/delete/<%= user._id %> " role="button">Delete <%= user.fullname %> </a>
         <br>
