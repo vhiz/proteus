@@ -76,11 +76,11 @@ router.post('/login/admin', async(req,res)=>{
 })
 
 
-router.get('/delete/:id',verifiedAuth,async(req, res)=>{
+router.get('/delete/:_id',verifiedAuth,async(req, res)=>{
 
-    const user = await User.findOne({_id: req.params.id})
+    const user = await User.findOne({_id: req.params._id})
     if(!user)return res.status(404).send('user has either been deleted or doesnot exist')
-    const todo = await User.findOne({_id: req.params.id})
+    const todo = await User.findOne({_id: req.params._id})
     res.render('delete', {todo: todo.todo, user:user})
 })
 
