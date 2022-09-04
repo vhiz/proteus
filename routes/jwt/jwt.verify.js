@@ -32,7 +32,7 @@ const verifiedAdmin = (req, res, next)=>{
         if(req.user.isAdmin){
             next()
         }else{
-            return res.status(401).send('user not authorised')
+            return res.status(401).send('Admin use only')
         }
     })
 }
